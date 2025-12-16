@@ -2,6 +2,7 @@
 
 import type { FormEvent } from "react";
 import { useState } from "react";
+import Image from "next/image";
  
 
 export default function BusinessPage() {
@@ -35,9 +36,15 @@ export default function BusinessPage() {
       setStatus("success");
       setMessage("Thanks! We'll be in touch soon.");
       form.reset();
-    } catch (err: any) {
+    } catch (err: unknown) {
       setStatus("error");
-      setMessage(err?.message || "Something went wrong");
+      let errorMessage = "Something went wrong";
+      if (err instanceof Error) {
+        errorMessage = err.message;
+      } else if (typeof err === "string") {
+        errorMessage = err;
+      }
+      setMessage(errorMessage);
     }
   }
 
@@ -52,9 +59,11 @@ export default function BusinessPage() {
         </p>
 
         <div className="mt-8">
-          <img
-            src="/learncity/business.png"
+          <Image
+            src="/learncity/business-hero.svg"
             alt="Partner with Learncity"
+            width={1200}
+            height={800}
             className="w-full h-auto rounded-2xl border border-black/10 dark:border-white/15 shadow-sm"
           />
         </div>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import HeroBackground from "@/components/HeroBackground";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -28,9 +29,11 @@ export default function Home() {
           </Link>
         </div>
         <div className="mx-auto mt-12 max-w-5xl">
-          <img
-            src="/learncity/img"
+          <Image
+            src="/learncity/app-screenshot.svg"
             alt="Learncity app preview"
+            width={1200}
+            height={800}
             className="w-full h-auto rounded-2xl border border-black/10 dark:border-white/15 shadow-sm"
           />
         </div>

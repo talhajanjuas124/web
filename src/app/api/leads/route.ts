@@ -13,7 +13,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const h = headers();
+    const h = await headers();
     const lead = {
       name: name || "",
       businessName,
